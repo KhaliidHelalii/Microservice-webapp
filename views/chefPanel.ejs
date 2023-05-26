@@ -1,0 +1,276 @@
+<%- include("shared/header.ejs") %>
+
+<div class="chefPanel w-75 m-auto text-center">
+
+    <h3 class="text-capitalize"> <i class="fas fa-quote-left mr-3"></i>Chef Panel<i class="fas fa-quote-right"></i>
+    </h3>
+
+    <div class="container">
+
+        <div class="text-center mt-4">
+            <button type="button" class="btn btn-danger w-25" data-toggle="modal" data-target="#addProduct">
+                Add Product
+            </button>
+        </div>
+
+
+
+        <!-- Add Modal -->
+        <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+            <form action="/addProduct" method="POST">
+
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Add product
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group mb-5">
+                                    <div class="
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                        ">
+                                        <i class="fas fa-user mr-2" style="color: #dc3545; font-size: 20px"></i>
+                                        <input type="text" class="form-control w-50" id="" placeholder="Title"
+                                            name="title" />
+                                    </div>
+                                </div>
+                                <div class="form-group mb-5">
+                                    <div class="
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                        ">
+                                        <i class="fas fa-audio-description mr-2"
+                                            style="color: #dc3545; font-size: 20px"></i>
+                                        <input type="text" class="form-control w-50" placeholder="Description"
+                                            name="description" id="exampleInputPassword1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-5">
+                                    <div class="
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                        ">
+                                        <i class="fas fa-images mr-2" style="color: #dc3545; font-size: 20px"></i>
+
+                                        <input type="file" class="form-control w-50" placeholder=""
+                                            id="exampleInputPassword1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-5">
+                                    <div class="
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                        ">
+                                        <i class="fas fa-money-bill-alt mr-2"
+                                            style="color: #dc3545; font-size: 20px"></i>
+                                        <input type="number" class="form-control w-50" placeholder="Price" name='price'
+                                            id="exampleInputPassword1" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-danger">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+
+
+        <% if ( products.length !=0) { %>
+        <div class="all">
+            <div class="row">
+
+
+
+                <% for( let i = 0; i < products.length; i++ ) { %>
+
+
+
+                <div class="col-md-12 admin-prodcuts">
+                    <div class="row">
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img id='img<%= products[i].id%>' src="images/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg"
+                                class="" alt="">
+
+                        </div>
+                        <div class="col-md-3 mt-1">
+                            <h4 id='title<%= products[i].id%>' class="mycolor"> <%= products[i].title %> </h4>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <!-- <p>30 reviews</p> -->
+                        </div>
+
+
+
+
+                        <div class="col-md-2 d-flex justify-content-center align-items-center mt-3">
+                            <p id='price<%= products[i].id%>' class="mycolor"><%= products[i].price %>$</p>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="col-md-2 d-flex justify-content-center align-items-center">
+
+                            <button type="submit btn border-0" class="delete"> <i class="fas fa-edit "
+                                    style="color: #dc3545;" data-toggle="modal" data-target="#editProduct"
+                                    onclick="edit('<%= products[i].id%>')"></i>
+                            </button>
+
+
+
+                            <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <form action="/editProduct" method="POST">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit product</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group mb-5">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <i class="fas fa-user mr-2"
+                                                                style="color: #dc3545;font-size: 20px;"></i>
+                                                            <input type="text" class="form-control w-50" id="titleInput"
+                                                                placeholder="Title" name='title'>
+                                                        </div>
+                                                        <input hidden type="text" name='id' id='id'>
+
+                                                    </div>
+                                                    <div class="form-group mb-5">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <i class="fas fa-audio-description mr-2"
+                                                                style="color:#dc3545 ; font-size: 20px;"></i>
+                                                            <input type="text" class="form-control w-50"
+                                                                placeholder="Description" id="descriptionInput"
+                                                                name='description'>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <i class="fas fa-images mr-2"
+                                                                style="color:#dc3545 ;font-size: 20px;"></i>
+
+                                                            <input type="file" class="form-control w-50 " placeholder=""
+                                                                id="imgInput">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <i class="fas fa-money-bill-alt mr-2"
+                                                                style="color:#dc3545 ;font-size: 20px;"></i>
+                                                            <input type="number" class="form-control w-50 "
+                                                                placeholder="Price" id="priceInput" name='price'>
+
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-danger">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                        <div class="col-md-2 d-flex justify-content-center align-items-center">
+                            <form action="/delete/<%= products[i].id %>" method="POST">
+                                <button type="submit btn border-0" class="delete"><i class="fas fa-trash-alt  "
+                                        style="color: #dc3545;"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <% } %>
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <%  } else { %>
+
+        <% } %>
+
+
+    </div>
+
+
+
+</div>
+
+<%- include("shared/footer.ejs") %>

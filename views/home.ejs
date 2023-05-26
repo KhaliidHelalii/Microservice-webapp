@@ -1,0 +1,410 @@
+<%- include("shared/header.ejs") %>
+
+<header class="">
+    <div class="container">
+        <div class="row">
+            <div class="left-side col-md-10">
+                <h1>
+                    <i class="fas fa-quote-left"></i> peaople who love to eat
+                    are always best people
+                    <i class="fas fa-quote-right"></i>
+                </h1>
+                <img src="images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" alt="" class="w-100" />
+            </div>
+
+            <div class="right-side col-md-2 mt-5 text-center p-2">
+                <h4 class="text-capitalize">your meal has been shipped</h4>
+                <img src="images/delivery-service-with-masks-concept_23-2148497067.jpg" class="w-100" alt="" />
+                <p>30:00</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="meals">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 d-flex justify-content-between">
+                <h3 class="text-capitalize">our meals</h3>
+
+                <input type="text" class="form-control w-50" placeholder="search by name" name="search" />
+
+            </div>
+
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="row">
+                    <% for( let i = 0; i < product.length; i++ ) { %>
+
+                    <div class="card col-md-4" style="">
+                        <img src="images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg" class="w-100" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title text-capitalize"><%= product[i].title%></h5>
+                            <p class="card-text">
+                                <%= product[i].description %>
+                            </p>
+
+                            <p class="card-text">Price <%= product[i].price %>$ </p>
+                            <div>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span><%= product[i].rate %> </span>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="text-center mb-2">
+
+
+
+
+
+                            <button type="button" class="btn btn-danger text-capitalize w-50" data-toggle="modal"
+                                data-target="#cartModal"> add to cart</button>
+
+                            <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-capitalize" id="exampleModalLabel">cart</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body p-3">
+                                            <div class="row m-3 cart-prodcuts">
+                                                <div class="col-md-12 mb-3 ">
+                                                    <div class="row">
+                                                        <div class="col-md-3 text-center">
+                                                            <img src="images/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg"
+                                                                class="" alt="">
+
+                                                        </div>
+                                                        <div class="col-md-3 text-center">
+                                                            <h4 class="mycolor"> pizza</h4>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+
+                                                        </div>
+
+
+
+                                                        <div
+                                                            class="col-md-3 text-center d-flex align-items-center justify-content-center">
+                                                            <h3 class="price mycolor">45 </h3>
+                                                            <span class="dollar mycolor">$</span>
+
+
+                                                        </div>
+
+
+
+                                                        <div
+                                                            class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                                            <button type="button"
+                                                                class="btn btn-danger text-capitalize">
+                                                                delete <i class="fas fa-trash-alt "
+                                                                    style=""></i></button>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-12 mb-3 ">
+                                                    <div class="row">
+                                                        <div class="col-md-3 text-center">
+                                                            <img src="images/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg"
+                                                                class="" alt="">
+
+                                                        </div>
+                                                        <div class="col-md-3 text-center">
+                                                            <h4> pizza</h4>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+
+                                                        </div>
+
+
+
+                                                        <div
+                                                            class="col-md-3 text-center d-flex align-items-center justify-content-center">
+                                                            <h3 class="price">45 </h3>
+                                                            <span class="dollar">$</span>
+
+
+                                                        </div>
+
+
+
+                                                        <div
+                                                            class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                                            <button type="button"
+                                                                class="btn btn-danger text-capitalize">
+                                                                delete <i class="fas fa-trash-alt "
+                                                                    style=""></i></button>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            </div>
+
+                                            <div class="text-center">
+                                                <h5 id="total"></h5>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-success text-capitalize">order</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!--  start details modal  Modal -->
+                        <!-- <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+
+
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-capitalize" id="exampleModalLabel">product
+                                            details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body p-3">
+                                        <div class="row m-3 ">
+                                            <div class="details m-auto w-100 m-5 ">
+
+                                                <div class="row details-header">
+                                                    <div class="col-md-4">
+                                                        <img src="images/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg"
+                                                            class="w-100 " alt="">
+                                                    </div>
+
+                                                    <div class="col-md-7 offset-1">
+                                                        <h3 class="text-capitalize"> <i
+                                                                class="fas fa-quote-left"></i>pizza <i
+                                                                class="fas fa-quote-right"></i></h3>
+                                                        <p>cheif loay <i class="fas fa-star"></i> <i
+                                                                class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row details-content">
+                                                    <div class="col-md-12">
+                                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing
+                                                            elit.
+                                                            Magni ducimus dicta nulla? Cupiditate quia,
+                                                            accusantium
+                                                            hic, vitae sunt dicta nihil vero eaque, debitis
+                                                            quisquam
+                                                            possimus placeat illo aut soluta consectetur! Lorem
+                                                            ipsum dolor
+                                                        </p>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row details-cart">
+                                                    <div class="container">
+                                                        <div class="row text-center">
+
+                                                            <div class="col-md-4">
+                                                                <div class="row">
+                                                                    <div class="col-md-7">
+                                                                        <span> quantity:</span>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-1">
+                                                                                <span class="counter"> 1 </span>
+
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <i class="far fa-plus-square"></i>
+                                                                                <i class="far fa-minus-square"></i>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <p id="price">6.99$</p>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+
+
+                                        <button type="submit" class="btn btn-danger text-capitalize">add to
+                                            cart</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- <button type="button" class="btn btn-danger text-capitalize w-50" data-toggle="modal"
+                        data-target="#detailsModal"> show details</button> -->
+                        <!-- end  details modal modal-->
+
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- start modal -->
+
+        <!-- Button trigger modal -->
+        <!-- <div class="text-center mt-4">
+            <button type="button" class="btn btn-danger w-25" data-toggle="modal" data-target="#addProduct">
+                Add Product
+            </button>
+        </div>
+
+       
+        <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+            <form action="/addProduct" method="POST">
+
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Add product
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group mb-5">
+                                    <div class="
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                        ">
+                                        <i class="fas fa-user mr-2" style="color: #dc3545; font-size: 20px"></i>
+                                        <input type="text" class="form-control w-50" id="" placeholder="Title"
+                                            name="title" />
+                                    </div>
+                                </div>
+                                <div class="form-group mb-5">
+                                    <div class="
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                        ">
+                                        <i class="fas fa-audio-description mr-2"
+                                            style="color: #dc3545; font-size: 20px"></i>
+                                        <input type="text" class="form-control w-50" placeholder="Description"
+                                            name="description" id="exampleInputPassword1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-5">
+                                    <div class="
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                        ">
+                                        <i class="fas fa-images mr-2" style="color: #dc3545; font-size: 20px"></i>
+
+                                        <input type="file" class="form-control w-50" placeholder=""
+                                            id="exampleInputPassword1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-5">
+                                    <div class="
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                        ">
+                                        <i class="fas fa-money-bill-alt mr-2"
+                                            style="color: #dc3545; font-size: 20px"></i>
+                                        <input type="number" class="form-control w-50" placeholder="Price" name='price'
+                                            id="exampleInputPassword1" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-danger">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div> -->
+    </div>
+</div>
+<%- include("shared/footer.ejs") %>

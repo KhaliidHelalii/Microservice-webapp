@@ -1,0 +1,85 @@
+<%- include("shared/header.ejs") %>
+<form action="/product-details" method="GET">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <h3 class="text-capitalize">
+                        <i class="fas fa-quote-left"></i>
+                        pizza
+                        <i class="fas fa-quote-right"></i>
+                    </h3>
+                    <div class="details m-auto w-75">
+                        <div class="container">
+                            <div class="row details-header">
+                                <div class="col-md-4">
+                                    <img src="images/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg" class="w-100"
+                                        alt="" />
+                                </div>
+
+
+                                <p>
+                                    cheif loay <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row details-content">
+                            <div class="col-md-12">
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Magni ducimus dicta nulla? Cupiditate quia, accusantium hic,
+                                    vitae sunt dicta nihil vero eaque, debitis quisquam possimus
+                                    placeat illo aut soluta consectetur! Lorem ipsum dolor sit
+                                    amet consectetur adipisicing elit. Sit alias fugit illo
+                                    laudantium blanditiis optio neque odio et officiis provident
+                                    inventore impedit maiores in voluptates exercitationem
+                                    accusamus, fuga ad iure!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row details-cart">
+                            <div class="container">
+                                <div class="row text-center">
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span> quantity:</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                        <span class="counter"> 1 </span>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <i class="far fa-plus-square"></i>
+                                                        <i class="far fa-minus-square"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <p id="price">6.99$</p>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <button class="btn btn-danger text-capitalize">
+                                            add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </h5>
+        </div>
+    </div>
+    </div>
+</form>
+
+<%- include("shared/footer.ejs") %>

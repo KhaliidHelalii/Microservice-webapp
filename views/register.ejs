@@ -1,0 +1,133 @@
+<%- include("shared/header.ejs") %>
+
+<div class="login-form w-50 m-auto">
+    <form action="/handelUser" method="POST">
+        <div class="login text-center">
+            <h3 class="text-capitalize text-center mb-5">
+                <i class="fas fa-quote-left mr-3"></i>Register
+                <i class="fas fa-quote-right"></i>
+            </h3>
+
+
+            <div class="form-group mb-4 one">
+                <div class="d-flex justify-content-center align-items-center">
+                    <i class="fas fa-user mr-1" style="color: #dc3545"></i>
+                    <input type="text" class="form-control w-50" id="user-name" name='username' placeholder="Name"
+                        value="<%= oldInput?oldInput.username:''%>" />
+
+                </div>
+            </div>
+
+            <% if (errors.find(e=>e.param=='username')) { %>
+            <div class="form-group d-flex justify-content-center align-items-center">
+                <!-- .find(e.param) to search for the name in the errors.array  -->
+                <div class="alert alert-danger w-50 text-capitalize">invalid name</div>
+            </div>
+            <% } %>
+
+
+            <div class="form-group mb-4 two">
+                <div class="d-flex justify-content-center align-items-center">
+                    <i class="fas fa-envelope mr-1" style="color: #dc3545"></i>
+                    <input type="email" class="form-control w-50" id="" name="email" placeholder="Email"
+                        value="<%= oldInput?oldInput.email:''%>" />
+
+                </div>
+            </div>
+
+            <% if (errors.find(e=>e.param=='email')) { %>
+            <div class="form-group d-flex justify-content-center align-items-center">
+                <!-- .find(e.param) to search for the name in the errors.array  -->
+                <div class="alert alert-danger w-50">Invalid Email</div>
+            </div>
+            <% } %>
+            <% if (exists.length != 0) { %>
+            <div class="form-group d-flex justify-content-center align-items-center">
+                <div class="alert alert-danger w-50">Email Already Exist</div>
+            </div>
+            <% } %>
+
+            <div class="form-group mb-4 three">
+                <div class="d-flex justify-content-center align-items-center">
+                    <i class="fas fa-address-card mr-1" style="color: #dc3545"></i>
+                    <input type="text" class="form-control w-50" id="" placeholder="Address" name='address'
+                        value="<%= oldInput?oldInput.address:''%>" value='' />
+                </div>
+            </div>
+
+            <% if (errors.find(e=>e.param=='address')) { %>
+            <div class="form-group d-flex justify-content-center align-items-center">
+                <!-- .find(e.param) to search for the name in the errors.array  -->
+                <div class="alert alert-danger w-50">Please Enter Your Address</div>
+            </div>
+            <% } %>
+
+            <div class="form-group mb-4 four">
+                <div class="d-flex justify-content-center align-items-center">
+                    <i class="fas fa-lock mr-1" style="color: #dc3545"></i>
+                    <input type="password" class="form-control w-50" placeholder="Password" id="exampleInputPassword1"
+                        name="password" />
+                </div>
+            </div>
+            <% if (errors.find(e=>e.param=='password')) { %>
+            <div class="form-group d-flex justify-content-center align-items-center">
+                <!-- .find(e.param) to search for the name in the errors.array  -->
+                <div class="alert alert-danger w-50 d-flex align-items-start flex-column">
+                    <p class="paserr">Your Password is week you need</p>
+                    <p class="pass-err">1 letter Cap and Small</p>
+                    <p class="pass-err">1 Special Character</p>
+                    <p class="pass-err">At least 8 Character</p>
+                </div>
+                <!-- <div class="alert alert-info w-50"> </div> -->
+            </div>
+            <% } %>
+
+            <div class="form-group mb-4 five">
+                <div class="d-flex justify-content-center align-items-center">
+                    <i class="fas fa-lock mr-1" style="color: #dc3545"></i>
+                    <input type="password" class="form-control w-50" placeholder="Confirm Password"
+                        id="exampleInputPassword1" name="confirmPassword" />
+                </div>
+            </div>
+            <% if (errors.find(e=>e.param=='confirmPassword')) { %>
+            <div class="form-group d-flex justify-content-center align-items-center">
+                <!-- .find(e.param) to search for the name in the errors.array  -->
+                <div class="alert alert-danger w-50">Password Not Match</div>
+            </div>
+            <% } %>
+
+            <div class="form-group mb-4 six">
+                <div class="">
+                    <!--
+                        class ="d-flex justify-content-center align-items-start" 
+                    -->
+
+
+
+                    <div class="custom-control custom-radio text-center">
+                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input"
+                            value="chef" />
+                        <label class="custom-control-label" for="customRadio1">Chef</label>
+                    </div>
+
+                    <div class="custom-control custom-radio text-center">
+                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input"
+                            value="customer" />
+                        <label class="custom-control-label" for="customRadio2">Customer</label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button type="submit" id="send" class="btn btn-danger w-50 seven">Submit</button>
+
+    </form>
+</div>
+<!-- <div class="col-md-6 photo">
+                <img src="images/wp1929358.webp" class="w-100" alt="">
+
+            </div> -->
+</div>
+
+<%- include("shared/footer.ejs") %>

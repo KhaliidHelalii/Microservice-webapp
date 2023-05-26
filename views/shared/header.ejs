@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+
+<body>
+    <!-- <div class="icons">
+        <div class="container">
+            <div class="d-flex justify-content-end">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-twitter-square"></i>
+                <i class="fab fa-instagram-square"></i>
+            </div>
+
+        </div>
+
+
+    </div> -->
+
+    <nav class="navbar navbar-expand-lg navbar-light mb-4">
+        <div class="container">
+            <a class="navbar-brand text-capitalize" href="/home">aklat</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto text-capitalize">
+                    <% if (myID) { %>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/chef">chef panel</a>
+                    </li>
+
+                    <!-- related to cart modal-->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#cartModal">cart</a>
+                    </li>
+
+                    <!-- related to cart modal-->
+
+                    <!--  start cart modal  Modal -->
+                    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-capitalize" id="exampleModalLabel">cart</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body p-3">
+                                    <div class="row m-3 cart-prodcuts">
+                                        <div class="col-md-12 mb-3 ">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img src="images/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg"
+                                                        class="" alt="">
+
+                                                </div>
+                                                <div class="col-md-3 text-center">
+                                                    <h4 class="mycolor"> pizza</h4>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+
+                                                </div>
+
+
+
+                                                <div
+                                                    class="col-md-3 text-center d-flex align-items-center justify-content-center">
+                                                    <h3 class="price mycolor">45 </h3>
+                                                    <span class="dollar mycolor">$</span>
+
+
+                                                </div>
+
+
+
+                                                <div
+                                                    class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                                    <button type="button" class="btn btn-danger text-capitalize">
+                                                        delete <i class="fas fa-trash-alt " style=""></i></button>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-12 mb-3 ">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img src="images/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg"
+                                                        class="" alt="">
+
+                                                </div>
+                                                <div class="col-md-3 text-center">
+                                                    <h4> pizza</h4>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+
+                                                </div>
+
+
+
+                                                <div
+                                                    class="col-md-3 text-center d-flex align-items-center justify-content-center">
+                                                    <h3 class="price">45 </h3>
+                                                    <span class="dollar">$</span>
+
+
+                                                </div>
+
+
+
+                                                <div
+                                                    class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                                    <button type="button" class="btn btn-danger text-capitalize">
+                                                        delete <i class="fas fa-trash-alt " style=""></i></button>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+                                    <div class="text-center">
+                                        <h5 id="total"></h5>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-success text-capitalize">order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end  cart modal modal-->
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+
+                    <% } else { %>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">login</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">sign Up</a>
+                    </li>
+                </ul>
+            </div>
+            <% } %>
+        </div>
+    </nav>
+</body>
+
+</html>

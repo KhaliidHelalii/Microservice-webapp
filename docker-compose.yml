@@ -1,0 +1,48 @@
+version: "3.7"
+
+services: 
+    client:
+        container_name: react 
+        build: 
+           context: .
+           dockerfile: Dockerfile
+        volumes:
+           - "./client:/app"
+        ports:
+           - 3000:3000
+        environment:
+           - CHOKIDAR_USEPOLLING=true
+
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: Mariam
+            MONGO_INITDB_ROOT_PASSWORD: dodii
+            MONGO_INITDB_DATABASE: Users
+        ports:
+            - 27017:27017
+        volumes:
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+    api:
+        build: 
+           dockerfile: Dockerfile
+           context: ./api
+        container_name: api
+        ports: 
+          - 7000:7000
+        restart: always
+        depends_on: 
+          - "mongodb"
+
+  # mongo: 
+  #   image: mongo:4.0.17-xenial
+  #   ports:
+  #     - 3002:3000
+  #   environment:
+  #     - MONGO_INITDB_DATABASE=${DB_NAME}
+  #   restart : always
+  #   volumes :
+  #     -
