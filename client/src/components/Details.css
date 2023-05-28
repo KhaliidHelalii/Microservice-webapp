@@ -1,0 +1,60 @@
+/* Add this CSS code to your stylesheet or component */
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+.counter-button {
+  width: 30px;
+  height: 30px;
+  background-color: #ef4c00;
+  color: #fff;
+  border: #fff;
+  box-shadow: none;
+}
+.counter-button2 {
+  width: 30px;
+  height: 30px;
+  background-color: #ef4c00;
+  color: #fff;
+  border: #fff;
+  box-shadow: none;
+  margin-left: 20px;
+}
+.counter {
+  margin: 20px;
+}
