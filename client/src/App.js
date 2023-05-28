@@ -6,34 +6,44 @@ import Register from "./components/Register";
 import Details from "./components/Details";
 import AboutUsPage from "./components/AboutUs";
 import ContactUsPage from "./components/ContactUs";
+import ProfilePage from "./components/ProfilePage";
+import CartPage from "./components/CartPage";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { apiResponse: "" };
+    this.state = {
+      apiResponse: "",
+      cartItems: [], // Define cartItems in the state
+    };
   }
+
   callAPI() {
     fetch("http://localhost:7000/testAPI")
       .then((res) => res.text())
       .then((res) => this.setState({ apiResponse: res }));
   }
+
   componentWillMount() {
     this.callAPI();
   }
+
   render() {
+    const { cartItems } = this.state; // Get cartItems from the state
+
     return (
       <Routes>
-        <Route path="/Login" element={<Login></Login>}></Route>
-        <Route path="/" element={<Hero></Hero>}></Route>
-        <Route path="/Register" element={<Register></Register>}></Route>
-        <Route path="/Details" element={<Details></Details>}></Route>
-        <Route path="/About" element={<AboutUsPage></AboutUsPage>}></Route>
-        <Route
-          path="/ContactUs"
-          element={<ContactUsPage></ContactUsPage>}
-        ></Route>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/" element={<Hero />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Details" element={<Details />} />
+        <Route path="/About" element={<AboutUsPage />} />
+        <Route path="/ContactUs" element={<ContactUsPage />} />
+        <Route path="/Profile" element={<ProfilePage />} />
+        <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
       </Routes>
     );
   }
 }
+
 export default App;

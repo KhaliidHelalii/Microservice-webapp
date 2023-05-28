@@ -2,29 +2,45 @@ import React from "react";
 import Navbar from "./Navbar";
 
 class Register extends React.Component {
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event.target.elements.username.value);
-    console.log(event.target.elements.email.value);
-    console.log(event.target.elements.address.value);
-    console.log(event.target.elements.password.value);
+    const username = event.target.elements.username.value;
+    const email = event.target.elements.email.value;
+    const password = event.target.elements.password.value;
+
     const article = {
-      username: event.target.elements.username.value,
-      email: event.target.elements.email.value,
-      password: event.target.elements.password.value,
+      username: username,
+      email: email,
+      password: password,
     };
-    //   axios.post('localhost:9000/api/auth/register', article);
-    fetch("http://localhost:7000/api/auth/register", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(article),
-    });
-    //       then((result) => result.json())
-    // .then((info) => { console.log(info); })
+
+    try {
+      const response = await fetch(`http://localhost:7000/api/auth/register`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:7000*",
+          mode: "no-cors",
+        },
+        body: JSON.stringify(article),
+      });
+
+      if (response.ok) {
+        // Signup successful
+        // Redirect to "/"
+
+        alert("Signup Success");
+        window.location.href = "/Login";
+      } else {
+        // Handle signup error
+        console.log("Signup failed");
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
+
   render() {
     return (
       <div class=" login text-center ">
@@ -53,17 +69,6 @@ class Register extends React.Component {
               />
             </div>
           </div>
-          {/* <div class="form-group mb-4">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <input
-                            class="form-control w-50"
-                            type="text"
-                            name="address"
-                            placeholder='Adress'
-                            ref={node => (this.inputNode = node)}
-                            />
-                    </div>
-            </div> */}
           <div class="form-group mb-4">
             <div class="d-flex justify-content-center align-items-center">
               <input
