@@ -1,0 +1,30 @@
+.about-us-container {
+  align-items: center;
+  max-width: 800px;
+  margin-left: 100px;
+  padding: 20px;
+  background-color: white;
+}
+
+.about-us-container h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ef4c00;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.about-us-container p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.image-abtus img {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 10%;
+  right: 300px;
+  top: 200px;
+}
