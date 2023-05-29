@@ -5433,7 +5433,7 @@ input[type="button"].btn-block {
 .card-body {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  min-height: 1px;
+  height: 180px;
   padding: 1.25rem;
 }
 
@@ -8797,6 +8797,7 @@ button.bg-dark:focus {
 
 .w-100 {
   width: 100% !important;
+  height: 100%;
 }
 
 .w-auto {

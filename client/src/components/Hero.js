@@ -9,7 +9,22 @@ const Hero = () => {
   const [meals, setMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMeal, setSelectedMeal] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const [checkoutItems, setCheckoutItems] = useState([]);
+  const [checkoutPrice, setCheckoutPrice] = useState(0);
+  const [fullName, setFullName] = useState("");
+  const [address, setAddress] = useState({ street: "", building: "", apt: "" });
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [checkoutSuccess, setCheckoutSuccess] = useState(false);
+
+  const addToCart = () => {
+    setCartCount(cartCount + 1);
+    setCheckoutItems([...checkoutItems, selectedMeal]);
+    setCheckoutPrice(checkoutPrice + selectedMeal.price);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,8 +58,8 @@ const Hero = () => {
           <span>{meal.reviews} reviews</span>
           <br />
           <button
-            className="header__optionLineTwo"
-            onClick={() => openModal(meal._id)}
+            className="details-btn"
+            onClick={() => openDetailsModal(meal)}
           >
             Details
           </button>
@@ -66,14 +81,44 @@ const Hero = () => {
       .catch((error) => console.log(error));
   };
 
-  const openModal = (_id) => {
-    fetchProductDetails(_id);
-    setIsModalOpen(true);
+  const openDetailsModal = (meal) => {
+    fetchProductDetails(meal._id);
+    setIsDetailsModalOpen(true);
   };
 
-  const closeModal = () => {
+  const closeDetailsModal = () => {
     setSelectedMeal(null);
-    setIsModalOpen(false);
+    setIsDetailsModalOpen(false);
+  };
+
+  const openCheckoutModal = () => {
+    setIsCheckoutModalOpen(true);
+  };
+
+  const closeCheckoutModal = () => {
+    setIsCheckoutModalOpen(false);
+  };
+
+  const handleFullNameChange = (e) => {
+    setFullName(e.target.value);
+  };
+
+  const handleAddressChange = (e) => {
+    setAddress({ ...address, [e.target.name]: e.target.value });
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
+  const handleCheckout = () => {
+    // Perform the necessary checkout logic
+    // Display a success toast
+    setCheckoutSuccess(true);
   };
 
   return (
@@ -121,10 +166,9 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
       <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
+        isOpen={isDetailsModalOpen}
+        onRequestClose={closeDetailsModal}
         className="modal"
         overlayClassName="modal-overlay"
       >
@@ -137,10 +181,97 @@ const Hero = () => {
             <p>Size: {selectedMeal.size}</p>
             <p>Color: {selectedMeal.color}</p>
             <p>Price: {selectedMeal.price}</p>
+            <p>Cart Count: {cartCount}</p>
+            <button onClick={addToCart}>Add to Cart</button>
+            <button onClick={closeDetailsModal}>Close</button>
+            <button onClick={openCheckoutModal}>Checkout</button>
           </div>
         )}
-        <button onClick={closeModal}>Close</button>
       </Modal>
+
+      <Modal
+        isOpen={isCheckoutModalOpen}
+        onRequestClose={closeCheckoutModal}
+        className="modal"
+        overlayClassName="modal-overlay"
+      >
+        <div>
+          <h2>Checkout</h2>
+          <div className="form-group">
+            <label htmlFor="fullName">Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              value={fullName}
+              onChange={handleFullNameChange}
+              placeholder="Full Name"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="street">Street</label>
+            <input
+              type="text"
+              id="street"
+              name="street"
+              value={address.street}
+              onChange={handleAddressChange}
+              placeholder="Street Address"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="building">Building</label>
+            <input
+              type="text"
+              id="building"
+              name="building"
+              value={address.building}
+              onChange={handleAddressChange}
+              placeholder="Building No."
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="apt">Apt.</label>
+            <input
+              type="text"
+              id="apt"
+              name="apt"
+              value={address.apt}
+              onChange={handleAddressChange}
+              placeholder="Apt. No."
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              placeholder="Email Address"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="phoneNumber">Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              value={phoneNumber}
+              onChange={handlePhoneNumberChange}
+              placeholder="Phone Number"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="Price">Price</label>
+            <p className="pad-p">Price: {checkoutPrice}</p>
+          </div>
+          <button onClick={handleCheckout}>Checkout</button>
+          <button onClick={closeCheckoutModal}>Close Checkout</button>
+        </div>
+      </Modal>
+
+      {checkoutSuccess && (
+        <div className="toast">Success! Order has been placed.</div>
+      )}
     </div>
   );
 };
