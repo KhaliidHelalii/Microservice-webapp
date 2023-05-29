@@ -119,6 +119,7 @@ const Hero = () => {
     // Perform the necessary checkout logic
     // Display a success toast
     setCheckoutSuccess(true);
+    window.alert("Success! Order has been placed.");
   };
 
   return (
