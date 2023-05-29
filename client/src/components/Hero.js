@@ -183,8 +183,8 @@ const Hero = () => {
             <p>Price: {selectedMeal.price}</p>
             <p>Cart Count: {cartCount}</p>
             <button onClick={addToCart}>Add to Cart</button>
-            <button onClick={closeDetailsModal}>Close</button>
             <button onClick={openCheckoutModal}>Checkout</button>
+            <button onClick={closeDetailsModal}>Close</button>
           </div>
         )}
       </Modal>
