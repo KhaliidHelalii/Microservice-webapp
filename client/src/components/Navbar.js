@@ -35,6 +35,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/profile">
+              <span className="header__optionLineTwo"> Profile </span>
+            </Link>
+          </li>
+          <li>
             <Link to="/Login">
               <span className="header__optionLineTwo"> Login </span>
             </Link>
